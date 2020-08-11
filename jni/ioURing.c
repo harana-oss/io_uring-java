@@ -15,7 +15,8 @@
         ts.tv_nsec = (msec % 1000) * 1000000;     \
     } while(0)
 
-#define SUPPORT_OP_CODE(op_code) (io_uring_probe_p && io_uring_opcode_supported((struct io_uring_probe *)io_uring_probe_p, op_code))
+//#define SUPPORT_OP_CODE(op_code) (io_uring_probe_p && io_uring_opcode_supported((struct io_uring_probe *)io_uring_probe_p, op_code))
+#define SUPPORT_OP_CODE(op_code) false
 
 #define BUILD_IO_VEC_1(buf, len)                        \
     struct iovec* vecs = malloc(sizeof(struct iovec));  \
@@ -45,7 +46,7 @@ jlong io_uring_probe_p;
 JNIEXPORT void JNICALL Java_org_chinaxing_IoURingNative_initIDs(JNIEnv * env, jclass clz)
 {
     ring_fid = (*env)->GetFieldID(env, clz, "_ring", "J");
-    io_uring_probe_p = (jlong)io_uring_get_probe();
+    //io_uring_probe_p = (jlong)io_uring_get_probe();
 }
 
 JNIEXPORT jint JNICALL Java_org_chinaxing_IoURingNative_init0(JNIEnv * env, jobject self, jint entries, jlong flags)
