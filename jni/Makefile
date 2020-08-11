@@ -1,4 +1,4 @@
-JAVA_HOME ?= /opt/taobao/java
+JAVA_HOME ?= /usr/lib/jvm/default-java
 CC ?= clang
 FLAGS = -D_REENTRANT
 INCLUDE = -I . -I ${JAVA_HOME}/include -I ${JAVA_HOME}/include/linux/
